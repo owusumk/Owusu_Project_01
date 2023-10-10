@@ -1,0 +1,11 @@
+---
+title: "Owusu_Project_01_report"
+author: "Moses Owusu (111018138)"
+date: "2023-10-10"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+### report for project_01
