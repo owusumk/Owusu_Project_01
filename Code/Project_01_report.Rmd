@@ -9,6 +9,7 @@ output: html_document
 knitr::opts_chunk$set(echo = TRUE)
 ```
 ### report for project_01
+
 ```{r}
 library(ggplot2)
 setwd("/Users/mosesowusu/Downloads/CSPH/Fall 2023/BIOS 6621-STAT consulting/Owusu_Project_01/DataRaw")
@@ -55,5 +56,20 @@ In line calculations for the mean
 avg <- function(x){
   sum(x)/length(x) #sum of observations divided by number of observations
 }
+```
+
+After observing the **999** was a mistake
+```{r}
+#code to change 999 to 99
+mydata[mydata == 999] <- 99
+
+#write csv file to DataProcessed folder
+write.csv(mydata, "/Users/mosesowusu/Downloads/CSPH/Fall 2023/BIOS 6621-STAT consulting/Owusu_Project_01/DataProcessed/edited.csv")
+
+
+far<-mydata[mydata$Smelter=="Far",]
+near<-mydata[mydata$Smelter=="Near",]
+avg(far$IQ)
+avg(near$IQ)
 ```
 
