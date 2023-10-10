@@ -58,15 +58,17 @@ avg <- function(x){
 }
 ```
 
-After observing the **999** was a mistake
+Changing **999** was to 99
 ```{r}
-#code to change 999 to 99
+
 mydata[mydata == 999] <- 99
 
 #write csv file to DataProcessed folder
 write.csv(mydata, "/Users/mosesowusu/Downloads/CSPH/Fall 2023/BIOS 6621-STAT consulting/Owusu_Project_01/DataProcessed/edited.csv")
 
 
+#load edited data 
+mydata<-read.csv("/Users/mosesowusu/Downloads/CSPH/Fall 2023/BIOS 6621-STAT consulting/Owusu_Project_01/DataProcessed/edited.csv")
 far<-mydata[mydata$Smelter=="Far",]
 near<-mydata[mydata$Smelter=="Near",]
 avg(far$IQ)
