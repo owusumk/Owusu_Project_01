@@ -9,3 +9,50 @@ output: html_document
 knitr::opts_chunk$set(echo = TRUE)
 ```
 ### report for project_01
+```{r}
+library(ggplot2)
+setwd("/Users/mosesowusu/Downloads/CSPH/Fall 2023/BIOS 6621-STAT consulting/Owusu_Project_01/DataRaw")
+mydata<-read.csv("lead-iq-01.csv")
+#subset the data
+far<-mydata[mydata$Smelter=="Far",]
+near<-mydata[mydata$Smelter=="Near",]
+#boxpplot of IQ by smelters
+ggplot(mydata, aes(x = factor(Smelter), y = IQ, fill = factor(Smelter))) +
+  geom_boxplot() +
+  labs(
+    title = "Box Plot of IQ by Smelter",
+    x = "Smelter",
+    y = "IQ",
+    fill = "Smelter"
+  ) +
+  scale_fill_manual(values = c("red", "blue"),
+                    labels = c("Far ", "Near")) +
+  theme_minimal()
+
+
+#table
+table<-table(mydata$Smelter, mydata$IQ)
+table
+```
+
+
+From the plot above, we can observe the distribution of IQ by smelters. The two boxplots show similarities but we observe an extreme value for the smelter **Far** and IQ of **999**
+The table below shows slight differences between the observed IQ at the smelters.
+```{r}
+#table
+summary(far)
+summary(near)
+iq_tab <-as.table(matrix(c(46.0, 84.0, 93.0, 106.1, 101.0, 999.0, 56.0,80.0, 88.0,89.19, 96.0,115.0) ,ncol=2,byrow=F))
+dimnames(iq_tab)<-list(Statistic =c("Min","1st Q", "Median", "Mean","3rd Q","Max"),
+                     Smelter=c("Far", "Near"))
+iq_tab
+
+```
+
+In line calculations for the mean
+
+```{r}
+avg <- function(x){
+  sum(x)/length(x) #sum of observations divided by number of observations
+}
+```
