@@ -56,3 +56,4 @@ avg <- function(x){
   sum(x)/length(x) #sum of observations divided by number of observations
 }
 ```
+
